@@ -43,7 +43,6 @@ describe PagesController do
                 :content =>
                      "Sample App | About")
     end
-
   end
 
 end
