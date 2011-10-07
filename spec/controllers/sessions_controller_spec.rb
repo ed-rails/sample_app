@@ -48,6 +48,8 @@ describe SessionsController do
       it  "should sign the user in" do
         post :create, :session => @attr
         # Fill in with test for signed-in users
+        controller.current_user.should == @user
+        controller.should be_signed_in
       end
 
       it "should redirect to the user show page" do
