@@ -46,7 +46,7 @@ describe "Users" do
       it "should not sign a user in" do
         visit signin_path
         fill_in :email, :with => ""
-        fill_in :password, :with = ""
+        fill_in :password, :with => ""
         click_button
         response.should have_selector("div.flash.error", :content => "invalid")
       end

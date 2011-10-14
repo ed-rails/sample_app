@@ -11,7 +11,7 @@ describe SessionsController do
 
     it "should have the right title" do
       get :new
-      ewsponse.should have_selector("title", :content => "Sign in")
+      response.should have_selector("title", :content => "Sign in")
     end
   end
 
@@ -53,7 +53,7 @@ describe SessionsController do
       end
 
       it "should redirect to the user show page" do
-        post :create :session => @attr
+        post :create, :session => @attr
         response.should redirect_to(user_path(@user))
       end
     end
