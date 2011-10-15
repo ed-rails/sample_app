@@ -51,7 +51,7 @@ describe UsersController do
                                            :content => "2")
         response.should have_selector("a", :href => "/users?page=2",
                                            :content => "Next")
-      
+      end
     end
   end
 
@@ -119,7 +119,7 @@ describe UsersController do
       response.should be_success
     end
 
-    it " shold find the right user" do 
+    it "should find the right user" do 
       get :show, :id => @user
       assigns(:user).should == @user
     end
@@ -172,7 +172,7 @@ describe UsersController do
  
     it "should have a link to change the Gravatar" do
       get :edit, :id => @user
-      gravater_url = "http://gravatar.com/emails"
+      gravatar_url = "http://gravatar.com/emails"
       response.should have_selector("a", :href => gravatar_url,
                                          :content => "change")
     end
@@ -249,7 +249,7 @@ describe UsersController do
       end
     end
 
-    describe " for signed-in users" do
+    describe "for signed-in users" do
 
       before(:each) do
         wrong_user = Factory(:user, :email => "user@example.net")
@@ -284,7 +284,7 @@ describe UsersController do
     describe "as a non-admin user" do
       it "should protect the page" do
         test_sign_in(@user)
-        delete :destroy, id => @user
+        delete :destroy, :id => @user
         response.should redirect_to(root_path)
       end
     end
@@ -296,7 +296,7 @@ describe UsersController do
         test_sign_in(admin)
       end
 
-      it "should destroy the user"
+      it "should destroy the user" do
         lambda do
           delete :destroy, :id => @user
         end.should change(User, :count).by(-1)
@@ -304,7 +304,7 @@ describe UsersController do
 
       it "should redirect to the users page" do
         delete :destroy, :id => @user
-        response.should redirect_to(users_apth)
+        response.should redirect_to(users_path)
       end
     end
   end
